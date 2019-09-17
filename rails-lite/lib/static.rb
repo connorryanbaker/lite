@@ -11,7 +11,6 @@ class Static
 			body = File.read(Dir.pwd + path)
       ext = /\.\w+$/.match(path)[0]
       headers["Content-Type"] = get_mime_type(ext) 
-			p headers
     rescue
 			status = '404'
       body = 'File not found'
