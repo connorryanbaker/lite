@@ -11,7 +11,7 @@ end
 
 router = Router.new
 router.draw do
-  get Regexp.new("^/$"), MyController, :go
+  get Regexp.new("^/public/*$"), MyController, :go
 end
 
 app = Proc.new do |env|
