@@ -7,7 +7,7 @@ class Route
 
   # checks if pattern matches path and method matches request method
   def matches?(req)
-    req.path =~ @pattern && req.request_method.downcase.to_sym == http_method
+    req.path =~ pattern && req.request_method.downcase.to_sym == http_method
   end
 
   # use pattern to pull out route params (save for later?)
@@ -36,12 +36,13 @@ class Router
   # for syntactic sugar :)
   def draw(&proc)
     instance_eval(&proc)
+    self
   end
 
   # make each of these methods that
   # when called add route
   [:get, :post, :put, :delete].each do |http_method|
-    define_method(http_method) {|p, cc, ac| add_route(http_method, p, cc, ac)}
+    define_method(http_method) {|p, cc, ac| add_route(p, http_method, cc, ac)}
   end
 
   # should return the route that matches this request

@@ -1,4 +1,4 @@
-require 'rack'
+rquire 'rack'
 require_relative '../lib/controller_base'
 require_relative '../lib/router'
 require_relative '../lib/static'
