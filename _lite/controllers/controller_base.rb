@@ -55,9 +55,9 @@ class ControllerBase
 
   # use this with the router to call action_name (:index, :show, :create...)
   def invoke_action(name)
-    if self.class.protect_from_forgery && req.request_method != 'GET'
-      check_authenticity_token
-    end
+    #if self.class.protect_from_forgery && req.request_method != 'GET'
+    # check_authenticity_token
+    #end
     self.send(name)
     render(name) unless already_built_response?
   end

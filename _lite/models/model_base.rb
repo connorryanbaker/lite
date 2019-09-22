@@ -1,5 +1,6 @@
-require_relative 'db_connection'
+require_relative '../db/db_connection'
 require_relative 'searchable'
+require_relative 'associatable'
 require 'active_support/inflector'
 
 class SQLObject
@@ -19,6 +20,12 @@ class SQLObject
     self.columns.each do |col|
       define_method("#{col}") { self.attributes[col] }
       define_method("#{col}=") { |val| self.attributes[col] = val }
+    end
+    define_method('id') { self.attributes['id'] }
+    define_method('id=') do |n|
+      if !self.attributes[id]
+        self.attributes[id] = n 
+      end
     end
   end
 
