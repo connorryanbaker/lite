@@ -35,18 +35,18 @@ describe Migration do
 
   describe '#gen_column_str' do
     it 'takes a hash and returns comma separated string of columnnames and types' do
-      expect(migration.gen_column_str(hash)).to be_a(String)
-      expect(migration.gen_column_str(hash)).to eq('name string NOT NULL, id integer NOT NULL')
+      expect(Migration.gen_column_str(hash)).to be_a(String)
+      expect(Migration.gen_column_str(hash)).to eq('name string NOT NULL, id integer NOT NULL')
     end
   end
 
   describe '#gen_create_query' do
     it 'takes a table name and column hash, returning a string' do
-      expect(migration.gen_create_query('users',{ 'name': 'string' })).to be_a(String)
+      expect(Migration.gen_create_query('users',{ 'name': 'string' })).to be_a(String)
     end
 
     it 'returns a create_table sql statement' do
-      expect(migration.gen_create_query('users', { 'name': 'string' })).to eq('CREATE TABLE users (name string NOT NULL);')
+      expect(Migration.gen_create_query('users', { 'name': 'string' })).to eq('CREATE TABLE IF NOT EXISTS users (name string NOT NULL);')
     end
   end
 end

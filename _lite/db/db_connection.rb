@@ -24,7 +24,7 @@ class DBConnection
   end
 
   def self.instance
-    reset if @db.nil?
+    open('app.db') if @db.nil?
 
     @db
   end
