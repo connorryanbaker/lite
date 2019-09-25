@@ -3,7 +3,7 @@ require_relative 'searchable'
 require_relative 'associatable'
 require 'active_support/inflector'
 
-class SQLObject
+class ModelBase 
   extend Searchable
   extend Associatable
   def self.columns

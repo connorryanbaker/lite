@@ -6,3 +6,4 @@ class UsersMigration < Migration
 end
 
 UsersMigration.run
+
