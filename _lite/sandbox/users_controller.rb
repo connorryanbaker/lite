@@ -13,6 +13,7 @@ class UsersController < ControllerBase
   def create
     name = req.params['username']
     @user = User.new(username: name)
+    debugger
     @user.save
     redirect_to('/users')
   end

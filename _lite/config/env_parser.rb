@@ -1,6 +1,6 @@
 class EnvParser
   def self.check_form_vars(env)
-    if env['rack.input'].methods.include?(:string)
+    if env['rack.input'].is_a?(StringIO) && env['rack.input'].string.start_with?('_method')
       method = env['rack.input'].string.split('=')[1]
       env['REQUEST_METHOD'] = method
     end 
