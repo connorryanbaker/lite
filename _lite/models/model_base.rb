@@ -112,4 +112,11 @@ class ModelBase
   def save
     self.id.nil? ? insert : update
   end
+  
+  def remove
+    DBConnection.execute(<<-SQL, self.id)
+      DELETE FROM #{self.class.table_name}
+      WHERE id = ?
+    SQL
+  end 
 end
