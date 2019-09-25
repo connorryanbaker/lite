@@ -16,4 +16,10 @@ class UsersController < ControllerBase
     @user.save
     redirect_to('/users')
   end
+
+  def delete
+    @user = User.find(req.path.split('/')[-1].to_i)
+    @user.remove
+    redirect_to('/users')
+  end 
 end
