@@ -1,1 +1,3 @@
-<h1>HELLO!!!!</h1>
+<% @users.each do |user| %>
+<h1><%= user.id %> | <%= user.username %></h1>
+<% end %>

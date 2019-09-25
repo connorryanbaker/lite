@@ -21,10 +21,10 @@ class ModelBase
       define_method("#{col}") { self.attributes[col] }
       define_method("#{col}=") { |val| self.attributes[col] = val }
     end
-    define_method('id') { self.attributes['id'] }
+    define_method('id') { self.attributes[:id] }
     define_method('id=') do |n|
-      if !self.attributes[id]
-        self.attributes[id] = n 
+      if !self.attributes[:id]
+        self.attributes[:id] = n 
       end
     end
   end
@@ -86,7 +86,6 @@ class ModelBase
   def insert
     col_names = self.class.writeable_columns.join(", ")
     qs = self.class.writeable_columns.map {|e| "?"}.join(", ")
-    debugger
     DBConnection.execute(<<-SQL, *attribute_values)
     INSERT INTO
       #{self.class.table_name} (#{col_names})

@@ -59,6 +59,7 @@ class ControllerBase
     # check_authenticity_token
     #end
     self.send(name)
+    debugger
     render(name) unless already_built_response?
   end
   

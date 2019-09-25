@@ -47,7 +47,7 @@ describe Migration do
     end
 
     it 'returns a create_table sql statement' do
-      expect(Migration.gen_create_query('users', { 'name': 'string' })).to eq('create table if not exists users(id int PRIMARY KEY, name string NOT NULL);')
+      expect(Migration.gen_create_query('users', { 'name': 'string' })).to eq('create table if not exists users(id integer PRIMARY KEY, name string NOT NULL);')
     end
   end
 
