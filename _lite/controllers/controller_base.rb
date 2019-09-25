@@ -22,7 +22,7 @@ class ControllerBase
   def redirect_to(url)
     raise if already_built_response?
     @res.location = url
-    @res.status = 302
+    @res.status = 303
     session.store_session(@res)
     @already_built_response = true
   end
@@ -59,7 +59,6 @@ class ControllerBase
     # check_authenticity_token
     #end
     self.send(name)
-    debugger
     render(name) unless already_built_response?
   end
   

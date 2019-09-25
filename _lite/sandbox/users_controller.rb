@@ -1,9 +1,12 @@
 require_relative '../controllers/controller_base'
 require_relative '../models/app/user'
 class UsersController < ControllerBase
+  def new
+    render('new')
+  end 
+
   def index
     @users = User.all
-    debugger
     render('index')
   end
 
@@ -11,6 +14,6 @@ class UsersController < ControllerBase
     name = req.params['username']
     @user = User.new(username: name)
     @user.save
-    redirect_to('localhost:3000/users')
+    redirect_to('/users')
   end
 end
