@@ -15,7 +15,7 @@ class Migration
   end
 
   def self.gen_create_query(name, hash)
-    @command = "create table if not exists #{name}(id int NOT NULL, #{gen_column_str(hash)});"
+    @command = "create table if not exists #{name}(id int PRIMARY KEY, #{gen_column_str(hash)});"
   end
 
   def self.gen_column_str(hash)

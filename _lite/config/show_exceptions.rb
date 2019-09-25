@@ -19,5 +19,4 @@ class ShowExceptions
   def render_exception(e)
     return ['500', {'Content-type' => 'text/html'}, e.message]
   end
-
 end

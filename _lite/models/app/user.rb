@@ -1,4 +1,4 @@
 require_relative '../model_base'
-class User < SQLObject
+class User < ModelBase
   self.finalize!
 end

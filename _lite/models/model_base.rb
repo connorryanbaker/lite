@@ -76,12 +76,17 @@ class ModelBase
   end
 
   def attribute_values
-    self.class.columns.map {|col| self.send("#{col}")}
+    self.class.writeable_columns.map {|col| self.send("#{col}")}
+  end
+
+  def self.writeable_columns
+    self.columns.reject {|col| col == :id}
   end
 
   def insert
-    col_names = self.class.columns.join(", ")
-    qs = self.class.columns.map {|e| "?"}.join(", ")
+    col_names = self.class.writeable_columns.join(", ")
+    qs = self.class.writeable_columns.map {|e| "?"}.join(", ")
+    debugger
     DBConnection.execute(<<-SQL, *attribute_values)
     INSERT INTO
       #{self.class.table_name} (#{col_names})
