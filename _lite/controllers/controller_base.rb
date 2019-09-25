@@ -22,7 +22,7 @@ class ControllerBase
   def redirect_to(url)
     raise if already_built_response?
     @res.location = url
-    @res.status = 303
+    @res.status = 302
     session.store_session(@res)
     @already_built_response = true
   end
@@ -45,8 +45,12 @@ class ControllerBase
     path = "/views/#{controller_name}/#{template_name}.html.erb"
     full_path = File.join(File.dirname(__dir__), path)
     template = ERB.new(File.read(full_path))
-    render_content(template.result(binding), 'text/html')
+    @template = template.result(binding)
+    final_path = File.join(File.dirname(__dir__), "/views/base.html.erb")
+    final = ERB.new(File.read(final_path))
+    render_content(final.result(binding), 'text/html')
   end
+  
 
   # method exposing a `Session` object
   def session

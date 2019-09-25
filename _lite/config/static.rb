@@ -7,14 +7,18 @@ class Static
   def call(env)
     path = env["PATH_INFO"]
     status, headers, body = app.call(env)
-    begin
-			body = File.read(Dir.pwd + path)
-      ext = /\.\w+$/.match(path)[0]
-      headers["Content-Type"] = get_mime_type(ext) 
-    rescue
-			status = '404'
-      body = 'File not found'
-    end 
+    debugger
+    if path.start_with?('/public/')
+			begin
+				body = File.read(Dir.pwd + path)
+				ext = /\.\w+$/.match(path)[0]
+				headers["Content-Type"] = get_mime_type(ext) 
+        status = body.length > 0 && ext ? 200 : status
+			rescue
+				status = '404'
+				body = 'File not found'
+			end 
+    end
     [status, headers, body]
   end
   
