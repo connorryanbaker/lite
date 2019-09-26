@@ -25,5 +25,15 @@ describe 'SessionsController' do
   end
 
   describe '#destroy' do
+    let(:env) { Rack::MockRequest.env_for('/') }
+    let(:req) { Rack::Request.new(env) }
+    let(:res) { Rack::Response.new([],200,{}) }
+    it 'resets the users token and sets key in the cookie to nil' do
+      env['rack.request.cookie_hash'] = "{\"_rails_lite_app\":\"key=123abc\"}"
+      sc = SessionsController.new(req, res)
+      sc.invoke_action(:destroy)
+      app_cookie = res.headers['Set-Cookie'].split('=')[1]
+      expect(app_cookie =~ /key/).to be(nil)
+    end 
   end
 end
