@@ -4,6 +4,9 @@
     <script src='../public/script.js' type='text/javascript'></script>
   </head>
 	<body>
+    <% if @current_user %>
+			<h1><%= @current_user.username %></h1>
+    <% end %>
     <%= @template %>
   </body>
 </html>

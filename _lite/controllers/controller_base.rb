@@ -23,7 +23,7 @@ class ControllerBase
     raise if already_built_response?
     @res.location = url
     @res.status = 302
-    session.store_session(@res)
+    session.store_session(res)
     @already_built_response = true
   end
 
@@ -34,7 +34,7 @@ class ControllerBase
     raise if already_built_response?
     @res['Content-Type'] = content_type
     @res.write(content)
-    session.store_session(@res)
+    session.store_session(res)
     @already_built_response = true
   end
 
@@ -47,6 +47,8 @@ class ControllerBase
     template = ERB.new(File.read(full_path))
     @template = template.result(binding)
     final_path = File.join(File.dirname(__dir__), "/views/base.html.erb")
+    debugger
+    current_user
     final = ERB.new(File.read(final_path))
     render_content(final.result(binding), 'text/html')
   end
@@ -78,6 +80,10 @@ class ControllerBase
   
   def self.protect_from_forgery
     @@protect_from_forgery ||= true
+  end 
+  
+  def current_user
+		@current_user ||= User.where(session_token: session[:key])[0]
   end 
 end
 

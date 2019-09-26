@@ -5,7 +5,7 @@ class Session
   # deserialize the cookie into a hash
   def initialize(req)
     if req.cookies['_rails_lite_app']
-      cookies = JSON.parse(req.cookies)['_rails_lite_app']
+      cookies = req.cookies['_rails_lite_app']
       @cookie = {}
       k, v = cookies.split('=')
       @cookie[k.to_sym] = v

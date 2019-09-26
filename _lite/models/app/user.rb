@@ -1,7 +1,7 @@
 require 'bcrypt'
 require_relative '../model_base'
 class User < ModelBase
-  self.finalize!
+  finalize!
   def initialize(params)
     params.each do |k,v|
       self.send("#{k}=", v)
