@@ -53,8 +53,8 @@ describe Migration do
 
   describe '::create_table' do
     before :each do
-      class UsersMigration < Migration
-        create_table 'users' do |t|
+      class LusersMigration < Migration
+        create_table 'lusers' do |t|
           t.string 'username'
         end
         self.run
@@ -73,20 +73,20 @@ describe Migration do
     end
 
     it 'creates an id column automatically' do
-      cols = db.execute2('select * from users')[0]
+      cols = db.execute2('select * from lusers')[0]
       expect(cols).to include('id')
     end
 
     it 'creates the columns listed in the block' do
-      cols = db.execute2('select * from users')[0]
+      cols = db.execute2('select * from lusers')[0]
       expect(cols).to include('username')
     end
   end
 
   describe '::drop_table' do
     before :each do
-      class UsersMigration < Migration
-        create_table 'users' do |t|
+      class LusersMigration < Migration
+        create_table 'lusers' do |t|
           t.string 'username'
         end
         self.run
@@ -94,12 +94,16 @@ describe Migration do
     end
 
     it 'drops the table with name matching the argument' do
-      Migration.drop_table('users').run
       tables = db.execute <<-SQL
         select name from sqlite_master 
         where type='table';
       SQL
-      expect(tables.length).to eq(0)
+      Migration.drop_table('lusers').run
+      tables2 = db.execute <<-SQL
+        select name from sqlite_master 
+        where type='table';
+      SQL
+      expect(tables2.length + 1).to eq(tables.length)
     end
 
     it 'will not raise an error if table does not exist' do

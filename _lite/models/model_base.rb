@@ -1,14 +1,14 @@
+require 'byebug'
 require_relative '../db/db_connection'
 require_relative 'searchable'
 require_relative 'associatable'
-require 'active_support/inflector'
 
 class ModelBase 
   extend Searchable
   extend Associatable
   def self.columns
     return @columns unless @columns.nil?
-    col = DBConnection.instance.execute2(<<-SQL)
+    col = DBConnection.execute2(<<-SQL)
       SELECT *
       FROM #{self.table_name}
       LIMIT 1

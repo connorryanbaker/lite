@@ -5,7 +5,7 @@ require_relative '../db/db_connection'
 describe ModelBase do
   describe '#remove' do
     before :each do
-      User.new(username: 'shabba').save
+      User.new(username: 'shabba', password: 'shabba').save
     end 
     
     it 'removes a record from the table' do
