@@ -18,6 +18,10 @@ class SessionsController < ControllerBase
     redirect_to('/users')
   end
   
+  def new
+    render('new')
+  end 
+  
   def current_user
     User.where(session_token: session[:key])[0]
   end 

@@ -2,7 +2,6 @@ require_relative '../controllers/controller_base'
 require_relative '../models/app/user'
 class UsersController < ControllerBase
   def new
-    debugger
     render('new')
   end 
 
@@ -12,11 +11,10 @@ class UsersController < ControllerBase
   end
 
   def create
-    debugger
     name, password = params['username'] || params[:username], params['password'] || params[:password]
     @user = User.new(username: name, password: password)
-    debugger
     @user.save
+    session[:key] = @user.reset_session_token!
     redirect_to('/users')
   end
 

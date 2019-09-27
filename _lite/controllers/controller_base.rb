@@ -1,3 +1,4 @@
+require 'ostruct'
 require 'active_support'
 require 'active_support/core_ext'
 require 'erb'
@@ -47,9 +48,9 @@ class ControllerBase
     template = ERB.new(File.read(full_path))
     @template = template.result(binding)
     final_path = File.join(File.dirname(__dir__), "/views/base.html.erb")
-    debugger
-    current_user
+    @current_user ||= current_user
     final = ERB.new(File.read(final_path))
+    # os = OpenStruct.new({:@current_user => current_user, :@template => @template}).instance_eval { binding }
     render_content(final.result(binding), 'text/html')
   end
   
