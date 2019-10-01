@@ -11,9 +11,10 @@ Router.new.draw do
   get Regexp.new('^\/users$'), UsersController, :index
   get Regexp.new('^\/users/(?<id>\d+)$'), UsersController, :show
   post Regexp.new('^\/users$'), UsersController, :create
-  delete Regexp.new('^\/users\/\d+$'), UsersController, :delete
+  delete Regexp.new('^\/users\/\d+$'), UsersController, :destroy
   get Regexp.new('^\/session/new$'), SessionsController, :new
   post Regexp.new('^\/session$'), SessionsController, :create
+  delete Regexp.new('^\/session$'), SessionsController, :destroy
   post Regexp.new('^\/users/(?<user_id>\d+)/todos$'), TodosController, :create
   get Regexp.new('^\/todos/(?<id>\d+)/edit'), TodosController, :edit
   put Regexp.new('^\/todos/(?<id>\d+)$'), TodosController, :update

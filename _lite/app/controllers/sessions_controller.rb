@@ -13,18 +13,12 @@ class SessionsController < ControllerBase
 	end
   
   def destroy
-    if current_user
-			current_user.reset_session_token!
-    end 
+    current_user.reset_session_token!
     session[:key] = nil
-    redirect_to('/users')
+    redirect_to('/')
   end
   
   def new
     render('new')
-  end 
-  
-  def current_user
-    User.where(session_token: session[:key])[0]
   end 
 end
