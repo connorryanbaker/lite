@@ -16,7 +16,6 @@ app = Proc.new do |env|
   env = EnvParser::check_form_vars(env)
   req = Rack::Request.new(env)
   res = Rack::Response.new
-  debugger
 	router.run(req,res)
   res.finish
 end

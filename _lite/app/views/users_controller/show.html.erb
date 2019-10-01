@@ -5,3 +5,13 @@
     <li><%= todo.title %></li>
   <% end %>
 </ul>
+<h3>New Todo</h3>
+<form action="/users/<%= @user.id %>/todos" method="post">
+  <label for="title">Title
+    <input type="text" name="title">
+  </label>
+  <label for="description">Description
+    <input type="text" name="description">
+  </label>
+  <input type="submit" value="Create Todo">
+</form>

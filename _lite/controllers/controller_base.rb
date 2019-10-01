@@ -41,9 +41,8 @@ class ControllerBase
 
   # use ERB and binding to evaluate templates
   # pass the rendered html to render_content
-  def render(template_name)
+  def render(template_name, controller_name = self.class.to_s.underscore)
     vars = { '@current_user' => current_user }
-    controller_name = self.class.to_s.underscore
     path = "app/views/#{controller_name}/#{template_name}.html.erb"
     full_path = File.join(File.dirname(__dir__), path)
     template = ERB.new(File.read(full_path))
