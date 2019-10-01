@@ -7,6 +7,7 @@ require_relative '../app/controllers/public_controller'
 require_relative '../app/controllers/users_controller'
 require_relative '../app/controllers/sessions_controller'
 require_relative '../app/controllers/root_controller'
+require_relative '../app/controllers/todos_controller'
 
 router_path = File.join(Dir.pwd + '/app/routes.rb')
 router = eval(File.readlines(router_path)[6..-1].join(''))

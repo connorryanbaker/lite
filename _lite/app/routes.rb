@@ -3,7 +3,7 @@ require_relative './controllers/public_controller'
 require_relative './controllers/users_controller'
 require_relative './controllers/sessions_controller'
 require_relative './controllers/root_controller'
-
+require_relative './controllers/todos_controller'
 Router.new.draw do
   get Regexp.new('^\/$'), RootController, :root
   get Regexp.new('^\/public/.*$'), PublicController, :serve
@@ -13,4 +13,7 @@ Router.new.draw do
   delete Regexp.new('^\/users\/\d+$'), UsersController, :delete
   get Regexp.new('^\/session/new$'), SessionsController, :new
   post Regexp.new('^\/session$'), SessionsController, :create
+  post Regexp.new('^\/users/(?<user_id>\d+)/todos$'), TodosController, :create
+  put Regexp.new('^\/todos/\d+$'), TodosController, :update
+  delete Regexp.new('^\/todos/\d+$'), TodosController, :delete
 end
