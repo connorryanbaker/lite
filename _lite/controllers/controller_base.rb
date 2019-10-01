@@ -42,13 +42,13 @@ class ControllerBase
   # use ERB and binding to evaluate templates
   # pass the rendered html to render_content
   def render(template_name)
+    vars = { '@current_user' => current_user }
     controller_name = self.class.to_s.underscore
     path = "app/views/#{controller_name}/#{template_name}.html.erb"
     full_path = File.join(File.dirname(__dir__), path)
     template = ERB.new(File.read(full_path))
     @template = template.result(binding)
     final_path = File.join(File.dirname(__dir__), "app/views/base.html.erb")
-    vars = { '@current_user' => current_user }
     final = ERB.new(File.read(final_path))
     # render_content(final.result(OpenStruct.new(vars).instance_eval { binding }), 'text/html')
     render_content(final.result(binding), 'text/html')

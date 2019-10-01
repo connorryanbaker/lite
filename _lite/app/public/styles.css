@@ -1,3 +1,12 @@
 * {
-  color: #ada8e9;
+  box-sizing: border-box;
+}
+
+.main-nav {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid #ada8e9;
 }

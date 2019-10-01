@@ -6,8 +6,10 @@ class SessionsController < ControllerBase
     user = User.authenticate(params)
     if user
 			session[:key] = user.reset_session_token!
-    end 
-    redirect_to('/users')
+      redirect_to('/')
+    else
+      render('new')
+    end
 	end
   
   def destroy

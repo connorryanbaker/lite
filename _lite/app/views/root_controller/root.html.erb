@@ -1,0 +1,7 @@
+<h1>Todo App Lite</h1>
+<% if @current_user %>
+  <a href="/users/<%= @current_user.id %>">Profile</a>
+<% else%>
+  <a href="/users/new">Sign Up</a>
+  <a href="/session/new">Log In</a>
+<% end %>
