@@ -17,5 +17,8 @@ class TodosController < ControllerBase
   end
 
   def destroy
+    @todo = Todo.where(id: params['id'])[0]
+    @todo.remove
+    redirect_to("/users/#{@todo.user_id}")
   end
 end

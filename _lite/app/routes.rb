@@ -16,5 +16,5 @@ Router.new.draw do
   post Regexp.new('^\/session$'), SessionsController, :create
   post Regexp.new('^\/users/(?<user_id>\d+)/todos$'), TodosController, :create
   put Regexp.new('^\/todos/(?<id>\d+)$'), TodosController, :update
-  delete Regexp.new('^\/todos/(?<id>\d+)$'), TodosController, :delete
+  delete Regexp.new('^\/todos/(?<id>\d+)$'), TodosController, :destroy
 end

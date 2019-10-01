@@ -3,6 +3,10 @@
 <ul>
   <% @user.todos.each do |todo| %>
     <li><%= todo.title %></li>
+    <form action="/todos/<%= todo.id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Todo">
+    </form>
   <% end %>
 </ul>
 <h3>New Todo</h3>
