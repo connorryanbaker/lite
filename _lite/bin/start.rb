@@ -3,11 +3,11 @@ require_relative '../config/router'
 require_relative '../config/show_exceptions'
 require_relative '../config/static'
 require_relative '../config/env_parser'
-require_relative '../sandbox/public_controller'
-require_relative '../sandbox/users_controller'
-require_relative '../sandbox/sessions_controller'
+require_relative '../app/controllers/public_controller'
+require_relative '../app/controllers/users_controller'
+require_relative '../app/controllers/sessions_controller'
 
-router_path = File.join(Dir.pwd + '/sandbox/routes.rb')
+router_path = File.join(Dir.pwd + '/app/routes.rb')
 router = eval(File.readlines(router_path)[4..-1].join(''))
 
 app = Proc.new do |env|

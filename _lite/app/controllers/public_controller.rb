@@ -1,4 +1,4 @@
-require_relative '../controllers/controller_base'
+require_relative '../../controllers/controller_base'
 
 class PublicController < ControllerBase
   def serve

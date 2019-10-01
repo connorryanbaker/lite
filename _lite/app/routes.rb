@@ -1,4 +1,6 @@
 require_relative '../config/router.rb'
+require_relative './controllers/public_controller'
+require_relative './controllers/users_controller'
 
 Router.new.draw do
   get Regexp.new('^\/public/.*$'), PublicController, :serve
