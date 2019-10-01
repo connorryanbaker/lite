@@ -5,7 +5,7 @@
   </head>
 	<body>
     <% if @current_user %>
-			<h1><%= @current_user.username %></h1>
+			<h1><%= current_user.username %></h1>
     <% end %>
     <%= @template %>
   </body>

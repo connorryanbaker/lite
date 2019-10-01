@@ -2,7 +2,7 @@ require_relative '../../controllers/controller_base'
 require_relative '../models/user'
 
 class SessionsController < ControllerBase
-	def create
+  def create
     user = User.authenticate(params)
     if user
 			session[:key] = user.reset_session_token!

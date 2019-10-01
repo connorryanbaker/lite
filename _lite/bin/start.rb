@@ -8,7 +8,7 @@ require_relative '../app/controllers/users_controller'
 require_relative '../app/controllers/sessions_controller'
 
 router_path = File.join(Dir.pwd + '/app/routes.rb')
-router = eval(File.readlines(router_path)[4..-1].join(''))
+router = eval(File.readlines(router_path)[5..-1].join(''))
 
 app = Proc.new do |env|
   env = EnvParser::check_form_vars(env)

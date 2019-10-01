@@ -96,10 +96,10 @@ class ModelBase
   end
 
   def update
-    set = self.class.columns[1..-1].map do |col|
+    set = self.class.writeable_columns.map do |col|
       "#{col} = ?"
     end
-    DBConnection.execute(<<-SQL, *attribute_values[1..-1], id)
+    DBConnection.execute(<<-SQL, *attribute_values, id)
       UPDATE
         #{self.class.table_name}
       SET

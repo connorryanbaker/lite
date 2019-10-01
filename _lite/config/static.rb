@@ -7,7 +7,6 @@ class Static
   def call(env)
     path = env["PATH_INFO"]
     status, headers, body = app.call(env)
-    debugger
     if path.start_with?('/public/')
 			begin
 				body = File.read(Dir.pwd + path)

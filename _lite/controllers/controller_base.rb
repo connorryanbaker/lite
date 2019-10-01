@@ -43,14 +43,14 @@ class ControllerBase
   # pass the rendered html to render_content
   def render(template_name)
     controller_name = self.class.to_s.underscore
-    path = "/views/#{controller_name}/#{template_name}.html.erb"
+    path = "app/views/#{controller_name}/#{template_name}.html.erb"
     full_path = File.join(File.dirname(__dir__), path)
     template = ERB.new(File.read(full_path))
     @template = template.result(binding)
-    final_path = File.join(File.dirname(__dir__), "/views/base.html.erb")
-    @current_user ||= current_user
+    final_path = File.join(File.dirname(__dir__), "app/views/base.html.erb")
+    vars = { '@current_user' => current_user }
     final = ERB.new(File.read(final_path))
-    # os = OpenStruct.new({:@current_user => current_user, :@template => @template}).instance_eval { binding }
+    # render_content(final.result(OpenStruct.new(vars).instance_eval { binding }), 'text/html')
     render_content(final.result(binding), 'text/html')
   end
   
@@ -84,7 +84,7 @@ class ControllerBase
   end 
   
   def current_user
-		@current_user ||= User.where(session_token: session[:key])[0]
+		@current_user ||= User.where(session_token: session['key'])[0]
   end 
 end
 
