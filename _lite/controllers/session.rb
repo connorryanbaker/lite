@@ -19,8 +19,6 @@ class Session
     @cookie[key] = val
   end
 
-  # serialize the hash into json and save in a cookie
-  # add to the responses cookies
   def store_session(res)
     cookie_str = @cookie.reject {|_,v| v.nil?}.to_json
     res.set_cookie('_rails_lite_app', { path: '/',
