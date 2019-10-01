@@ -5,6 +5,11 @@ class UsersController < ControllerBase
     render('new')
   end 
 
+  def show
+    @user = User.where(id: params['id'])[0]
+    render('show')
+  end
+
   def index
     @users = User.all
     render('index')
