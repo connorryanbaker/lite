@@ -8,6 +8,10 @@ module Searchable
       FROM #{self.table_name}
       WHERE #{where_line}
     SQL
-    return res[0] ? res.map {|r| self.send(:new, r)} : []
+    if res.length > 0 
+      res.length > 1 ? res.map {|r| self.send(:new, r)} : self.send(:new, res[0])
+    else
+      nil
+    end
   end
 end

@@ -7,7 +7,7 @@ describe UsersController do
     let(:req) { Rack::Request.new({'rack.input' => ''}) }
     let(:res) { Rack::Response.new }
     after :each do 
-      user = User.where(username: 'cR0nD0n')[0]
+      user = User.where(username: 'cR0nD0n')
       user.remove
     end 
     it 'adds a users to the db' do

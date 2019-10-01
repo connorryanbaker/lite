@@ -83,7 +83,7 @@ class ControllerBase
   end 
   
   def current_user
-		@current_user ||= User.where(session_token: session['key'])[0]
+		@current_user ||= User.where(session_token: session['key'])
   end 
 end
 

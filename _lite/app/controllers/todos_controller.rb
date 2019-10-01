@@ -14,12 +14,12 @@ class TodosController < ControllerBase
   end
 
   def edit
-    @todo = Todo.where(id: params['id'])[0]
+    @todo = Todo.where(id: params['id'])
     render('edit')
   end
 
   def update
-    @todo = Todo.where(id: params['id'])[0]
+    @todo = Todo.where(id: params['id'])
     @todo.title = params['title']
     @todo.description = params['description']
     @todo.save
@@ -27,7 +27,7 @@ class TodosController < ControllerBase
   end
 
   def destroy
-    @todo = Todo.where(id: params['id'])[0]
+    @todo = Todo.where(id: params['id'])
     @todo.remove
     redirect_to("/users/#{@todo.user_id}")
   end

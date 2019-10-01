@@ -9,7 +9,7 @@ describe 'SessionsController' do
     let(:env) { {'rack.input' => ''} }
     let(:req) { Rack::Request.new(env) }
     let(:res) { Rack::Response.new([],200,{}) }
-    let(:cr0n) { User.where(username: 'cr0nD0n')[0] }
+    let(:cr0n) { User.where(username: 'cr0nD0n') }
     context 'with valid credentials' do
       before :each do
         User.new(username: 'cr0nD0n', password: 'cr0nD0n').save
@@ -19,7 +19,7 @@ describe 'SessionsController' do
       end
 
       after :each do
-        User.where(username: 'cr0nD0n')[0].remove
+        User.where(username: 'cr0nD0n').remove
       end
 
       it 'sets a cookie in the response' do
@@ -47,7 +47,7 @@ describe 'SessionsController' do
       end
       
       after :each do
-        User.where(username: 'cr0nD0n')[0].remove
+        User.where(username: 'cr0nD0n').remove
       end
 
       it 'renders the log in page when bad credentials are submitted' do

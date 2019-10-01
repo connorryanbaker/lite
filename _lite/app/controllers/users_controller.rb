@@ -6,7 +6,7 @@ class UsersController < ControllerBase
   end 
 
   def show
-    @user = User.where(id: params['id'])[0]
+    @user = User.where(id: params['id'])
     render('show')
   end
 
