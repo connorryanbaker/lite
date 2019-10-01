@@ -54,7 +54,11 @@ module Associatable
       fk = options.send(:foreign_key)
       model = options.send(:class_name).constantize
       params = {"#{fk}": id}
-      model.where(params)
+      res = model.where(params)
+      if res.is_a?(Array) 
+        return res.length == 0 ? [] : res
+      end 
+      [res]
     end
   end
 

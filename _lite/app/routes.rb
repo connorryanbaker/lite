@@ -6,9 +6,9 @@ require_relative './controllers/root_controller'
 require_relative './controllers/todos_controller'
 Router.new.draw do
   get Regexp.new('^\/$'), RootController, :root
-  get Regexp.new('^\/public/.*$'), PublicController, :serve
+  get Regexp.new('^\/app/public/.*$'), PublicController, :serve
   get Regexp.new('^\/users/new$'), UsersController, :new
-  get Regexp.new('^\/users$'), UsersController, :index
+  # get Regexp.new('^\/users$'), UsersController, :index
   get Regexp.new('^\/users/(?<id>\d+)$'), UsersController, :show
   post Regexp.new('^\/users$'), UsersController, :create
   delete Regexp.new('^\/users\/\d+$'), UsersController, :destroy

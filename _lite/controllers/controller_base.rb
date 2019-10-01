@@ -72,7 +72,8 @@ class ControllerBase
   end 
   
   def current_user
-		@current_user ||= User.where(session_token: session['key'])
+    @current_user = User.where(session_token: session['key'])
+    @current_user = @current_user.is_a?(Array) ? nil : @current_user
   end 
 end
 

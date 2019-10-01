@@ -11,7 +11,7 @@ module Searchable
     if res.length > 0 
       res.length > 1 ? res.map {|r| self.send(:new, r)} : self.send(:new, res[0])
     else
-      nil
+      []
     end
   end
 end

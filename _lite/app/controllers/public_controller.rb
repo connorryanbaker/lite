@@ -2,7 +2,7 @@ require_relative '../../controllers/controller_base'
 
 class PublicController < ControllerBase
   def serve
-    file = File.read(File.join(File.dirname(__dir__), req.path))
+    file = File.read(Dir.pwd + req.path)
     ext = req.path.match(/\..*$/)[0]
     content_type = get_mime_type(ext)
     render_content(file, content_type)

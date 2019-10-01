@@ -20,12 +20,12 @@ class UsersController < ControllerBase
     @user = User.new(username: name, password: password)
     @user.save
     session[:key] = @user.reset_session_token!
-    redirect_to('/users')
+    redirect_to('/')
   end
 
   def delete
     @user = User.find(req.path.split('/')[-1].to_i)
     @user.remove
-    redirect_to('/users')
+    redirect_to('/')
   end 
 end
