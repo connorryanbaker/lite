@@ -2,6 +2,7 @@ require 'bcrypt'
 require_relative '../../models/model_base'
 class User < ModelBase
   finalize!
+  has_many :todos
   def initialize(params)
     params.each do |k,v|
       self.send("#{k}=", v)
