@@ -2,12 +2,16 @@
 <h3>Todos</h3>
 <ul>
   <% @user.todos.each do |todo| %>
-    <li><%= todo.title %></li>
-    <form action="/todos/<%= todo.id %>" method="post">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete Todo">
-    </form>
-    <a href="/todos/<%= todo.id %>/edit">Edit Todo</a>
+  
+    <li class="todo-item">
+      <h3 class="todo-title" data-id="<%= todo.id %>"><%= todo.title %></h3>
+      <a href="/todos/<%= todo.id %>/edit">Edit Todo</a>
+      <form action="/todos/<%= todo.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Done!">
+      </form>
+    </li>
+    <p class="hidden todo-description" data-id="<%= todo.id %>"><%= todo.description%></p>
   <% end %>
 </ul>
 <h3>New Todo</h3>

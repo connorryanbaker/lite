@@ -10,3 +10,17 @@
   align-items: baseline;
   border-bottom: 1px solid #ada8e9;
 }
+
+.todo-item {
+  list-style-type: none;
+  display: flex;
+  align-items: baseline;
+}
+
+.hidden {
+  display: none;
+}
+
+a:visited {
+  color: rgb(0,0,238);
+}
