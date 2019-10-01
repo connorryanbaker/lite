@@ -1,5 +1,5 @@
-require_relative '../sandbox/sessions_controller'
-require_relative '../models/app/user'
+require_relative '../app/controllers/sessions_controller'
+require_relative '../app/models/user'
 require 'rack'
 
 describe 'SessionsController' do

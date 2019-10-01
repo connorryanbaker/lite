@@ -1,5 +1,5 @@
 require 'bcrypt'
-require_relative '../model_base'
+require_relative '../../models/model_base'
 class User < ModelBase
   finalize!
   def initialize(params)

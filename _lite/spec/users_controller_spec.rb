@@ -1,6 +1,6 @@
 require 'rack'
-require_relative '../sandbox/users_controller'
-require_relative '../models/app/user'
+require_relative '../app/controllers/users_controller'
+require_relative '../app/models/user'
 
 describe UsersController do
   describe '#create' do

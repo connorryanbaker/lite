@@ -1,5 +1,5 @@
-require_relative '../controllers/controller_base'
-require_relative '../models/app/user'
+require_relative '../../controllers/controller_base'
+require_relative '../models/user'
 class UsersController < ControllerBase
   def new
     render('new')

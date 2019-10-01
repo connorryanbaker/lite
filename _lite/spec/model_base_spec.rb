@@ -1,5 +1,5 @@
 require_relative '../models/model_base'
-require_relative '../models/app/user'
+require_relative '../app/models/user'
 require_relative '../db/db_connection'
 
 describe ModelBase do
