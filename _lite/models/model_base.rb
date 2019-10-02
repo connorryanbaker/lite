@@ -4,6 +4,7 @@ require_relative 'searchable'
 require_relative 'associatable'
 
 class ModelBase 
+  extend Validatable
   extend Searchable
   extend Associatable
   def self.columns
