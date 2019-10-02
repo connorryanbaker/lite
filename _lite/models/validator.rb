@@ -1,7 +1,7 @@
 require_relative '../controllers/flash'
 module Validatable
   ABSENT_VALUES = [nil, '']
-  def presence(*args)
+  def self.presence(*args)
     args.each do |arg|
       unless absent?(arg)
         flash['errors'] = "#{arg} must be present"
