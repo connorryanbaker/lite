@@ -1,5 +1,5 @@
 # lite
-lite is a web framework and orm written in ruby. 
+lite is an MVC web framework and orm written in ruby. 
 This framework began as an attempt to combine the end result of two projects we teach at App Academy, Rails Lite and Active Record Lite.
 Combining the two into a cohesive framework has been an edifying process, resulting in a full featured product with which one can interact much in the same way as with Ruby on Rails.
 Features include:
@@ -35,6 +35,27 @@ end
 ```
 
 2. Controller Base (inspired by ActionController)
+  - Controllers in lite that inherit from ControllerBase are ininitialized with a Rack::Request, Rack::Response and params hash. Inheritting from ControllerBase allows one to write controllers in the spirit of controllers in Rails.
+```ruby
+class TodosController < ControllerBase
+  def create
+    @todo = Todo.new(title: params['title'],
+                       description: params['description'],
+                       user_id: params['user_id'])
+    if @todo.save
+      redirect_to("/users/#{@todo.user_id}")
+    else
+      render('show', 'users_controller')
+    end
+  end
+
+  def edit
+    @todo = Todo.where(id: params['id'])
+    render('edit')
+  end
+  # ...
+end
+```
 3. Model Base (inspired by ActiveRecord::Base)
 4. Database Migrations
 5. Templating using ERB
