@@ -2,7 +2,7 @@
 lite is an MVC web framework and orm written in ruby. 
 This framework began as an attempt to combine the end result of two projects we teach at App Academy, Rails Lite and Active Record Lite.
 Combining the two into a cohesive framework has been an edifying process, resulting in a full featured product with which one can interact much in the same way as with Ruby on Rails.
-A very simple todo app was created using lite and hosted on EC2, check it out at www.tododododo.best or github.com/connorryanbaker/lite_framework_sample_app
+A very simple todo app was created using lite and hosted on EC2, check it out at www.tododododo.best or https://github.com/connorryanbaker/lite_framework_sample_app
 
 Features include:
 
