@@ -3,14 +3,11 @@ require_relative '../config/router'
 require_relative '../config/show_exceptions'
 require_relative '../config/static'
 require_relative '../config/env_parser'
-require_relative '../app/controllers/public_controller'
-require_relative '../app/controllers/users_controller'
-require_relative '../app/controllers/sessions_controller'
-require_relative '../app/controllers/root_controller'
-require_relative '../app/controllers/todos_controller'
 
-router_path = File.join(Dir.pwd + '/app/routes.rb')
-router = eval(File.readlines(router_path)[6..-1].join(''))
+# One way of instantiating the Router
+
+# router_path = File.join(Dir.pwd + '/app/routes.rb')
+# router = eval(File.readlines(router_path)[6..-1].join(''))
 
 app = Proc.new do |env|
   env = EnvParser::check_form_vars(env)
